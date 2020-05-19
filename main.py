@@ -6,6 +6,26 @@ magic = [{"name": "Fire", "cost": 10, "dmg": 60},
 
 
 player = Person(460, 65, 64, 30, magic)
+enemy = Person(1200, 65, 45, 25, magic)
 
-print(player.generate_spell_damage(0))
-print(player.generate_spell_damage(1))
+running = True
+i = 0
+
+print(bcolors.FAIL + bcolors.BOLD + "AN ENEMY ATTACKS!" + bcolors.ENDC)
+
+while running:
+    print("============================================")
+    player.choose_action()
+    choice = input("Choose action:")
+    index = int(choice) - 1
+
+    if index == 0:
+        dmg = player.generate_damage()
+        enemy.take_damage(dmg)
+        print("You attacked for", dmg, "points of damage.   Enemy HP:", enemy.get_hp())
+
+    enemy_choice = 1
+    
+    enemy_dmg = enemy.generate_damage()
+    player.take_damage(enemy_dmg)
+    print("Enemy attacks for", enemy_dmg, "Player HP", player.get_hp())
