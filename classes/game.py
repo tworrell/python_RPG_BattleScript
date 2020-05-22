@@ -21,6 +21,8 @@ class Person:
         self.df = df
         self.magic = magic
         self.actions = ["Attack", "Magic"]
+        
+        
 
     def generate_damage(self):
         return random.randrange(self.atkl, self.atkh)
@@ -30,6 +32,11 @@ class Person:
         if self.hp < 0:
             self.hp = 0
         return self.hp
+
+    def heal(self, dmg):
+        self.hp += dmg
+        if self.hp > self.maxhp:
+            self.hp = self.maxhp
 
     def get_hp(self):
         return self.hp

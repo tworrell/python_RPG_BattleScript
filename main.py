@@ -14,7 +14,7 @@ cure = Spell("Cure", 12, 120, "white")
 healing_word = Spell("Healing Word", 18, 200, "white")
 
 # Instantiate People
-player = Person(460, 65, 64, 30, [fire, thunder, blizzard, tsunami, meteor])
+player = Person(460, 65, 64, 30, [fire, thunder, blizzard, tsunami, meteor, cure, healing_word])
 enemy = Person(1200, 65, 45, 25, [])
 
 running = True
@@ -46,9 +46,15 @@ while running:
             print(bcolors.FAIL + "\nNot enough MP\n" + bcolors.ENDC)
             continue
 
-        player.reduce_mp(cost)
-        enemy.take_damage(magic_dmg)
-        print(bcolors.OKBLUE + "\n" + spell.name + " deals", str(magic_dmg), "points of damage" + bcolors.ENDC)
+        player.reduce_mp(spell.cost)
+
+
+        if spell.type == "white":
+            player.heal(magic_dmg)
+            print(bcolors.OKBLUE + "\n" + spell.name + " heals for", str(magic_dmg), "HP." + bcolors.ENDC)
+        elif spell.type == "black":
+            enemy.take_damage(magic_dmg)
+            print(bcolors.OKBLUE + "\n" + spell.name + " deals", str(magic_dmg), "points of damage" + bcolors.ENDC)
 
     enemy_choice = 1
     
