@@ -2,33 +2,21 @@ from classes.game import Person, bcolors
 from classes.magic import Spell
 from classes.inventory import Item
 
-# print("\n\n")
-# print("NAME                      HP                                   MP")
-# print("                       _________________________            __________")
-# print(bcolors.BOLD + "Black Diamond" +  " 210/460 |" + bcolors.OKGREEN + "████████████            " + bcolors.ENDC + bcolors.BOLD + "|     " + "65/65 |" + bcolors.OKBLUE + "█████████" + bcolors.ENDC + "|")
-
-# print("                         _________________________            __________")
-# print("Black Diamond   460/460 |                        |     65/65 |         |")
-
-# print("                         _________________________            __________")
-# print("Black Diamond   460/460 |                        |     65/65 |         |")
-
-# print("\n\n")
 # The Black Magic Spells
-fire = Spell("Fire", 10, 100, "black")
-thunder = Spell("Thunder", 10, 100, "black")
-blizzard = Spell("Blizzard", 10, 100, "black")
-tsunami = Spell("Tsunami", 14, 140, "black")
+fire = Spell("Fire", 25, 600, "black")
+thunder = Spell("Thunder", 25, 600, "black")
+blizzard = Spell("Blizzard", 25, 600, "black")
+tsunami = Spell("Tsunami", 40, 1200, "black")
 meteor = Spell("Meteor", 20, 200, "black")
 
 # The White Magic Spells
-cure = Spell("Cure", 12, 120, "white")
-healing_word = Spell("Healing Word", 18, 200, "white")
+cure = Spell("Cure", 25, 620, "white")
+healing_word = Spell("Healing Word", 32, 1500, "white")
 
 # Create some items
 potion = Item("Potion", "potion", "Heals 50 HP", 50)
 hipotion = Item("Hi-Potion", "potion", "Heals 100 HP", 100)
-superpotion = Item("Super Potion", "potion", "Heals 500 HP", 500)
+superpotion = Item("Super Potion", "potion", "Heals 1000 HP", 1000)
 elixer = Item("Elixer", "elixer", "Fully restores HP/MP of one party member", 9999)
 hielixer = Item("MegaElixer", "elixer", "Fully restores party's HP/MP", 9999)
 
@@ -40,10 +28,10 @@ player_items = [{"item": potion, "quantity": 15}, {"item": hipotion, "quantity":
 {"item": superpotion, "quantity": 5}, {"item": elixer, "quantity": 5}, {"item": hielixer, "quantity": 2}, {"item": grenade, "quantity": 5}]
 
 # Instantiate People
-player1 = Person("Blk Q:", 3260, 65, 64, 30, player_spells, player_items)
-player2 = Person("Cloud:", 4160, 65, 64, 30, player_spells, player_items)
-player3 = Person("Penny:", 3090, 65, 64, 30, player_spells, player_items)
-enemy = Person("Chimera", 1200, 65, 45, 25, [], [])
+player1 = Person("Blk Q:", 3260, 140, 300, 30, player_spells, player_items)
+player2 = Person("Cloud:", 4160, 188, 325, 30, player_spells, player_items)
+player3 = Person("Penny:", 3090, 174, 288, 30, player_spells, player_items)
+enemy = Person("Chimera", 11200, 701, 500, 25, [], [])
 
 players = [player1, player2, player3]
 
@@ -56,7 +44,7 @@ while running:
     print("============================================")
 
     print("\n\n")
-    print("NAME                          HP                             MP")
+    print("NAME                          HP                                 MP")
     for player in players:
         player.get_stats()
 
@@ -132,8 +120,6 @@ while running:
     print("==========================================")
     print("Enemy HP:", bcolors.FAIL + str(enemy.get_hp()) + "/" + str(enemy.get_max_hp()) + bcolors.ENDC + "\n")
     
-    # print("Your HP:", bcolors.OKGREEN + str(player.get_hp()) + "/" + str(player.get_max_hp()) + bcolors.ENDC)
-    # print("Your MP:", bcolors.OKBLUE + str(player.get_mp()) + "/" + str(player.get_max_mp()) + bcolors.ENDC + "\n")
 
     if enemy.get_hp() == 0:
         print(bcolors.OKGREEN + "You Win!" + bcolors.ENDC)
