@@ -157,3 +157,14 @@ class Person:
 
         print("                      _________________________________________________")
         print(bcolors.BOLD + str(self.name) + "   " + current_hp + "|" + bcolors.FAIL + hp_bar + bcolors.ENDC + "|")
+
+    def choose_target(self, enemies):
+        i = 1
+
+        print("\n" + bcolors.FAIL + bcolors.BOLD + "        TARGET:" + bcolors.ENDC)
+        for enemy in enemies:
+            if enemy.get_hp() != 0:
+                print("         " + str(i) + ".", enemy.name)
+                i += 1
+        choice = int(input("        Choose Enemy:")) - 1
+        return choice
